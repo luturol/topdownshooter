@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5;
+    [SerializeField] private float moveSpeed = 5f;
 
     private PlayerInput playerInput;
     private Rigidbody2D rgbody2D;
+    private Animator animator;
 
     private InputAction move;
     private InputAction attack;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         rgbody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
 
         move = playerInput.actions["Move"];
         attack = playerInput.actions["Attack"];
@@ -25,6 +27,10 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         movement = move.ReadValue<Vector2>();
+        
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
     private void FixedUpdate()

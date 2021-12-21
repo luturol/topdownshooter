@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a7663080596d341069f6dbaaecd4ab9d
+guid: fc792ea3ab9e6414984f9129e9c92e52
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7959223475597039671
-    second: hero-walk-back-3_0
+      213: 1331415594717569523
+    second: hero-walk-side-1-export_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +40,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -64,11 +64,11 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -80,7 +80,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -92,7 +92,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hero-walk-back-3_0
+      name: hero-walk-side-1-export_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 1
-        width: 16
-        height: 21
+        x: 9
+        y: 3
+        width: 14
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c7a6113b682b8190800000000000000
-      internalID: -7959223475597039671
+      spriteID: 3f16e83ed632a7210800000000000000
+      internalID: 1331415594717569523
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 3ef2570383e0d604e8783c50d1719851
     internalID: 0
     vertices: []
     indices: 
