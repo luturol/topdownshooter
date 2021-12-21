@@ -5,6 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private enum PlayerStates
+    {
+        Walk,
+        Attack
+    }
+
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float cooldownAttack = 2f;
 
@@ -15,8 +21,8 @@ public class PlayerController : MonoBehaviour
     private InputAction move;
     private InputAction attack;
     private Vector2 movement;
-    private float waitingTime;
-    private bool isWaitingAttackCooldown = false;
+    private PlayerStates currentState;
+    private Vector2 lastMovement;
 
     private void Awake()
     {
@@ -26,38 +32,51 @@ public class PlayerController : MonoBehaviour
 
         move = playerInput.actions["Move"];
         attack = playerInput.actions["Attack"];
+
+        currentState = PlayerStates.Walk;
     }
 
     private void Update()
     {
-        movement = move.ReadValue<Vector2>();
-
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+        if (movement != Vector2.zero)
+        {
+            lastMovement = movement;
+        }
+        else
+        {
+            animator.SetFloat("Last Move Horizontal", lastMovement.x);
+            animator.SetFloat("Last Move Vertical", lastMovement.y);
+        }
 
         bool isAttacking = attack.ReadValue<float>() == 1;
-        if(!isWaitingAttackCooldown && isAttacking)
+        if (isAttacking && currentState != PlayerStates.Attack)
         {
-            isWaitingAttackCooldown = true;
-            animator.SetBool("Attack", isAttacking);
+            StartCoroutine(AttackCoroutine());
         }
-
-        if (isWaitingAttackCooldown)
+        else if (currentState == PlayerStates.Walk)
         {
-            waitingTime += Time.deltaTime;
-
-            if(waitingTime >= cooldownAttack)            
-            {
-                waitingTime = 0f;
-                isWaitingAttackCooldown = false;                
-            }
+            movement = move.ReadValue<Vector2>();
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
         }
+    }
 
+    private IEnumerator AttackCoroutine()
+    {
+        animator.SetBool("Attack", true);
+        animator.SetFloat("Last Move Horizontal", lastMovement.x);
+        animator.SetFloat("Last Move Vertical", lastMovement.y);
+        yield return null;
+
+        animator.SetBool("Attack", false);
+        yield return new WaitForSeconds(0.33f);
     }
 
     private void FixedUpdate()
     {
-        rgbody2D.MovePosition(rgbody2D.position + movement * moveSpeed * Time.fixedDeltaTime);
+        if (currentState == PlayerStates.Walk)
+            rgbody2D.MovePosition(rgbody2D.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 }
+
