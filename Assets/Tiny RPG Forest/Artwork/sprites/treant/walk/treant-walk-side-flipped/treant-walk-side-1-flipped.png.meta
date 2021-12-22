@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7ee0977da157a4e579386ade0582feee
+guid: 9cf8bdda530af474f93c363a8325f1b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5688493311452000265
-    second: treant-walk-back-4_0
+      213: 318575302909034615
+    second: treant-walk-side-1-flipped_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +40,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -64,11 +64,11 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -80,7 +80,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -92,7 +92,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: treant-walk-back-4_0
+      name: treant-walk-side-1-flipped_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 3
-        width: 25
-        height: 26
+        x: 7
+        y: 4
+        width: 18
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9003840278691fe40800000000000000
-      internalID: 5688493311452000265
+      spriteID: 7700b14dc8ecb6400800000000000000
+      internalID: 318575302909034615
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 4f114d3cea336b54299f726bc76a40c1
     internalID: 0
     vertices: []
     indices: 
