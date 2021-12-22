@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private List<Transform> patrollingPoints;
     [SerializeField] private float speed;
     [SerializeField] private bool shouldRotate;
     [SerializeField] private Vector3 direction;
@@ -13,6 +12,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rgbody2D;
     private Vector2 movement;
+    private Vector2 lastMovement;
     private bool isInChaseRange;
     private bool isInAttackRange;
 
@@ -26,9 +26,15 @@ public class EnemyController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        animator.SetFloat("Speed", speed);
+    {        
+        animator.SetFloat("Speed", isInChaseRange ? speed : 0);
 
+        if(lastMovement != Vector2.zero)
+        {
+            animator.SetFloat("Last Move Horizontal", lastMovement.x);
+            animator.SetFloat("Last Move Vertical", lastMovement.y);
+        }
+        
         // isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsPlayer);
         // isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, whatIsPlayer);
 
@@ -74,7 +80,8 @@ public class EnemyController : MonoBehaviour
         if (isInChaseRange && !isInAttackRange)
         {
             rgbody2D.MovePosition((Vector2)transform.position + movement * speed * Time.fixedDeltaTime);
-        }
+            lastMovement = movement;
+        }        
 
         if (isInAttackRange)
         {

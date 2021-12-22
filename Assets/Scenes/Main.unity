@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb61cad06c5cf8f4b919d5cab2bb3009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrollingPoints: []
   speed: 2
   shouldRotate: 1
   direction: {x: 0, y: 0, z: 0}
@@ -388,9 +387,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04709685, y: 0}
+  m_Offset: {x: -0.04709673, y: 0.009418964}
   serializedVersion: 2
-  m_Radius: 1.8451973
+  m_Radius: 3.060299
 --- !u!1 &932660251
 GameObject:
   m_ObjectHideFlags: 0
