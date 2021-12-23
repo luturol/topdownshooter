@@ -22,9 +22,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rgbody2D;
     private Vector2 movement;
-    private Vector2 lastMovement;
-    private bool isInChaseRange;
-    private bool isInAttackRange;
+    private Vector2 lastMovement;    
     private EnemyState currentState;
     private PlayerController player;
     private bool isInCooldownAttack = false;
@@ -47,16 +45,13 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject, 0.5f);
         }
 
-        animator.SetFloat("Speed", isInChaseRange ? speed : 0);
+        animator.SetFloat("Speed", currentState == EnemyState.Chasing ? speed : 0);
 
         if (lastMovement != Vector2.zero)
         {
             animator.SetFloat("Last Move Horizontal", lastMovement.x);
             animator.SetFloat("Last Move Vertical", lastMovement.y);
         }
-
-        // isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, whatIsPlayer);
-        // isInAttackRange = Physics2D.OverlapCircle(transform.position, attackRadius, whatIsPlayer);
 
         direction = target.position - transform.position;
 
@@ -71,27 +66,27 @@ public class EnemyController : MonoBehaviour
             animator.SetFloat("Vertical", direction.y);
         }
 
-        if(isInAttackRange && player != null && !isInCooldownAttack)
+        if(currentState == EnemyState.Attack && player != null && !isInCooldownAttack)
         {
             StartCoroutine(AttackCo(player));
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {        
-        isInChaseRange = true;
+    {                
+        currentState = EnemyState.Chasing;
     }
 
     private void OnTriggerExit2D(Collider2D other)
-    {
-        isInChaseRange = false;     
+    {        
+        currentState = EnemyState.Idle;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            isInAttackRange = true;     
+            currentState = EnemyState.Attack;            
             player = other.gameObject.GetComponent<PlayerController>();       
         }
     }
@@ -109,20 +104,18 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        isInAttackRange = false;
+        currentState = EnemyState.Idle;
     }
 
     private void FixedUpdate()
     {
-        Debug.Log("Is in chase range: " + isInChaseRange);
-        Debug.Log("Is in attack range: " + isInAttackRange);
-        if (isInChaseRange && !isInAttackRange)
+        if (currentState == EnemyState.Chasing)
         {
             rgbody2D.MovePosition((Vector2)transform.position + movement * speed * Time.fixedDeltaTime);
             lastMovement = movement;
         }
 
-        if (isInAttackRange)
+        if (currentState == EnemyState.Attack)
         {
             rgbody2D.velocity = Vector2.zero;
         }
