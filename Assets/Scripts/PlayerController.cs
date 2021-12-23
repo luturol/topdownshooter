@@ -12,6 +12,14 @@ public class PlayerController : MonoBehaviour
         Attack
     }
 
+    private enum PlayerDirection
+    {
+        Up,
+        Down,
+        Right,
+        Left
+    }
+
     [SerializeField] private List<GameObject> hearts;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float cooldownAttack = 2f;
@@ -96,34 +104,67 @@ public class PlayerController : MonoBehaviour
         int x = Mathf.RoundToInt(lastMovement.x);
         int y = Mathf.RoundToInt(lastMovement.y);
 
-        if (x == 1)
+        Debug.Log("x: " + x + " y: " + y);
+
+        if (x == 1 && y == -1)
         {
-            direction = Vector2.right;
-            projectileRotation = new Vector3(0f, 0f, -90f);
+            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Down);            
+        }
+        else if (x == 1 && y == 1)
+        {
+            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Right);                        
+        }
+        else if (x == -1 && y == 1)
+        {
+            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Left);                        
+        }
+        else if (x == -1 && y == -1)
+        {
+            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Down);                        
+        }
+        else if (x == 1)
+        {
+            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Right);                        
         }
         else if (y == 1)
         {
-            projectileRotation = new Vector3(0f, 0f, 0f);
-            direction = Vector2.up;
+            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Up);                        
         }
         else if (x == -1)
         {
-            projectileRotation = new Vector3(0f, 0f, 90f);
-            direction = Vector2.left;
+            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Left);                        
         }
         else if (y == -1)
         {
-            projectileRotation = new Vector3(0f, 0f, -180f);
-            direction = Vector2.down;
+            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Down);                        
         }
         else
         {
-            projectileRotation = new Vector3(0f, 0f, 0f);
-            direction = Vector2.up;
+            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Up);                        
         }
+
+        var vector = Vector2.zero;
+
 
         projectile.GetComponent<Rigidbody2D>().velocity += direction * 10;
         projectile.transform.Rotate(projectileRotation);
+    }
+
+    private (Vector2, Vector3) GetProjectileDirection(PlayerDirection playerDirection)
+    {
+        switch(playerDirection)
+        {
+            case PlayerDirection.Up:
+                return (Vector2.up, new Vector3(0f, 0f, 90f));
+            case PlayerDirection.Down:
+                return (Vector2.down, new Vector3(0f, 0f, -180f));
+            case PlayerDirection.Right:
+                return (Vector2.right, new Vector3(0f, 0f, -90f));
+            case PlayerDirection.Left:
+                return (Vector2.left, new Vector3(0f, 0f, 90f));
+            default:
+                return (Vector2.up, new Vector3(0f, 0f, 0f));
+        }
     }
 
 
@@ -137,13 +178,13 @@ public class PlayerController : MonoBehaviour
     {
         hitPoints -= 1;
 
-        if(hearts.Count() > 0)
+        if (hearts.Count() > 0)
         {
             var heart = hearts.Last();
             hearts.Remove(heart);
             Destroy(heart);
         }
-        
+
     }
 }
 
