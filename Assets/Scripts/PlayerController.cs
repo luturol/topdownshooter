@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
         attack = playerInput.actions["Attack"];
 
         currentState = PlayerStates.Walk;
+
+        hitPoints = hearts.Count();
     }
 
     private void Update()
