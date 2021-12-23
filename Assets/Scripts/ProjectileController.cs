@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Collision arrow tag " + other.gameObject.tag);

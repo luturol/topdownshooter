@@ -117,8 +117,6 @@ public class PlayerController : MonoBehaviour
     {
         switch (playerDirection)
         {
-            case PlayerDirection.Up:
-                return (Vector2.up, new Vector3(0f, 0f, 90f));
             case PlayerDirection.Down:
                 return (Vector2.down, new Vector3(0f, 0f, -180f));
             case PlayerDirection.Right:
@@ -186,7 +184,6 @@ public class PlayerController : MonoBehaviour
             hearts.Remove(heart);
             Destroy(heart);
         }
-
     }
 }
 
