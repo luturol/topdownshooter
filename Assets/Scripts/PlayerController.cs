@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,9 +12,11 @@ public class PlayerController : MonoBehaviour
         Attack
     }
 
+    [SerializeField] private List<GameObject> hearts;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float cooldownAttack = 2f;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private int hitPoints;
 
     private PlayerInput playerInput;
     private Rigidbody2D rgbody2D;
@@ -123,6 +126,19 @@ public class PlayerController : MonoBehaviour
     {
         if (currentState == PlayerStates.Walk)
             rgbody2D.MovePosition(rgbody2D.position + movement * moveSpeed * Time.fixedDeltaTime);
+    }
+
+    public void LoseHitPoints()
+    {
+        hitPoints -= 1;
+
+        if(hearts.Count() > 0)
+        {
+            var heart = hearts.Last();
+            hearts.Remove(heart);
+            Destroy(heart);
+        }
+        
     }
 }
 
