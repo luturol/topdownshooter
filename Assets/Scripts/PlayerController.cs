@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator AttackCoroutine()
     {
         currentState = PlayerStates.Attack;
-
+        Debug.Log(lastMovement);
         animator.SetBool("Attack", true);
         animator.SetFloat("Last Move Horizontal", lastMovement.x);
         animator.SetFloat("Last Move Vertical", lastMovement.y);
@@ -93,22 +93,25 @@ public class PlayerController : MonoBehaviour
         Vector3 projectileRotation = Vector3.zero;
         Vector2 direction = Vector2.zero;
 
-        if (lastMovement.x == 1)
+        int x = Mathf.RoundToInt(lastMovement.x);
+        int y = Mathf.RoundToInt(lastMovement.y);
+
+        if (x == 1)
         {
             direction = Vector2.right;
             projectileRotation = new Vector3(0f, 0f, -90f);
         }
-        else if (lastMovement.y == 1)
+        else if (y == 1)
         {
             projectileRotation = new Vector3(0f, 0f, 0f);
             direction = Vector2.up;
         }
-        else if (lastMovement.x == -1)
+        else if (x == -1)
         {
             projectileRotation = new Vector3(0f, 0f, 90f);
             direction = Vector2.left;
         }
-        else if (lastMovement.y == -1)
+        else if (y == -1)
         {
             projectileRotation = new Vector3(0f, 0f, -180f);
             direction = Vector2.down;
