@@ -102,49 +102,12 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = Vector2.zero;
 
         int x = Mathf.RoundToInt(lastMovement.x);
-        int y = Mathf.RoundToInt(lastMovement.y);
+        int y = Mathf.RoundToInt(lastMovement.y);        
 
-        Debug.Log("x: " + x + " y: " + y);
-
-        if (x == 1 && y == -1)
-        {
-            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Down);            
-        }
-        else if (x == 1 && y == 1)
-        {
-            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Right);                        
-        }
-        else if (x == -1 && y == 1)
-        {
-            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Left);                        
-        }
-        else if (x == -1 && y == -1)
-        {
-            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Down);                        
-        }
-        else if (x == 1)
-        {
-            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Right);                        
-        }
-        else if (y == 1)
-        {
-            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Up);                        
-        }
-        else if (x == -1)
-        {
-            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Left);                        
-        }
-        else if (y == -1)
-        {
-            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Down);                        
-        }
-        else
-        {
-            (direction, projectileRotation) = GetProjectileDirection(PlayerDirection.Up);                        
-        }
+        var playerDirection = GetPlayerDirection(x, y);
+        (direction, projectileRotation) = GetProjectileDirection(playerDirection);
 
         var vector = Vector2.zero;
-
 
         projectile.GetComponent<Rigidbody2D>().velocity += direction * 10;
         projectile.transform.Rotate(projectileRotation);
@@ -152,7 +115,7 @@ public class PlayerController : MonoBehaviour
 
     private (Vector2, Vector3) GetProjectileDirection(PlayerDirection playerDirection)
     {
-        switch(playerDirection)
+        switch (playerDirection)
         {
             case PlayerDirection.Up:
                 return (Vector2.up, new Vector3(0f, 0f, 90f));
@@ -167,6 +130,45 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private PlayerDirection GetPlayerDirection(int x, int y)
+    {
+        if (x == 1 && y == -1)
+        {
+            return PlayerDirection.Down;
+        }
+        else if (x == 1 && y == 1)
+        {
+            return PlayerDirection.Right;
+        }
+        else if (x == -1 && y == 1)
+        {
+            return PlayerDirection.Left;
+        }
+        else if (x == -1 && y == -1)
+        {
+            return PlayerDirection.Down;
+        }
+        else if (x == 1)
+        {
+            return PlayerDirection.Right;
+        }
+        else if (y == 1)
+        {
+            return PlayerDirection.Up;
+        }
+        else if (x == -1)
+        {
+            return PlayerDirection.Left;
+        }
+        else if (y == -1)
+        {
+            return PlayerDirection.Down;
+        }
+        else
+        {
+            return PlayerDirection.Up;
+        }
+    }
 
     private void FixedUpdate()
     {
