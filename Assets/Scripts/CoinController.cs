@@ -37,7 +37,8 @@ public class CoinController : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-
+            other.gameObject.GetComponent<PlayerController>().SetHasCoin(true);
+            Destroy(gameObject);
         }
     }
 }

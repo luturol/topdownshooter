@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [SerializeField] private List<GameObject> hearts;
+    [SerializeField] private GameObject coinIcon;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float cooldownAttack = 2f;
     [SerializeField] private GameObject projectilePrefab;
@@ -50,10 +51,20 @@ public class PlayerController : MonoBehaviour
         currentState = PlayerStates.Walk;
 
         hitPoints = hearts.Count();
+
+        if(!hasCoin)
+        {
+            coinIcon.SetActive(false);
+        }
     }
 
     private void Update()
     {
+        if(hasCoin)
+        {
+            coinIcon.SetActive(true);
+        }
+
         bool isAttacking = attack.ReadValue<float>() == 1;
         if (isAttacking && currentState != PlayerStates.Attack)
         {
