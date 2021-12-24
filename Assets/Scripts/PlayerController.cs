@@ -65,6 +65,12 @@ public class PlayerController : MonoBehaviour
             coinIcon.SetActive(true);
         }
 
+        if(hitPoints == 0)
+        {
+            GameController.Instance.AddDeath();
+            GameController.Instance.SendToMenu();
+        }
+
         bool isAttacking = attack.ReadValue<float>() == 1;
         if (isAttacking && currentState != PlayerStates.Attack)
         {
@@ -215,5 +221,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public bool SetHasCoin(bool has) => hasCoin = has;
+    public bool GetHasCoin() => hasCoin;
 }
 
