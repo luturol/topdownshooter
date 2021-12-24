@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rgbody2D;
     private Vector2 movement;
-    private Vector2 lastMovement;    
+    private Vector2 lastMovement;
     private EnemyState currentState;
     private PlayerController player;
     private bool isInCooldownAttack = false;
@@ -66,28 +66,34 @@ public class EnemyController : MonoBehaviour
             animator.SetFloat("Vertical", direction.y);
         }
 
-        if(currentState == EnemyState.Attack && player != null && !isInCooldownAttack)
+        if (currentState == EnemyState.Attack && player != null && !isInCooldownAttack)
         {
             StartCoroutine(AttackCo(player));
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    {                
-        currentState = EnemyState.Chasing;
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            currentState = EnemyState.Chasing;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
-    {        
-        currentState = EnemyState.Idle;
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            currentState = EnemyState.Idle;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Player")
         {
-            currentState = EnemyState.Attack;            
-            player = other.gameObject.GetComponent<PlayerController>();       
+            currentState = EnemyState.Attack;
+            player = other.gameObject.GetComponent<PlayerController>();
         }
     }
 
@@ -104,7 +110,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        currentState = EnemyState.Idle;
+        currentState = EnemyState.Chasing;
     }
 
     private void FixedUpdate()
