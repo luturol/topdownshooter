@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
     private PlayerStates currentState;
     private Vector2 lastMovement = new Vector2(0f, 1f);
+    private bool hasCoin = false;
 
     private void Awake()
     {
@@ -105,7 +106,8 @@ public class PlayerController : MonoBehaviour
         int y = Mathf.RoundToInt(lastMovement.y);        
 
         var playerDirection = GetPlayerDirection(x, y);
-        (direction, projectileRotation) = GetProjectileDirection(playerDirection);
+        direction = GetVector2Direction(playerDirection);
+        projectileRotation = GetProjectileRotation(playerDirection);
 
         var vector = Vector2.zero;
 
@@ -113,18 +115,33 @@ public class PlayerController : MonoBehaviour
         projectile.transform.Rotate(projectileRotation);
     }
 
-    private (Vector2, Vector3) GetProjectileDirection(PlayerDirection playerDirection)
+    private Vector2 GetVector2Direction(PlayerDirection playerDirection)
     {
         switch (playerDirection)
         {
             case PlayerDirection.Down:
-                return (Vector2.down, new Vector3(0f, 0f, -180f));
+                return Vector2.down;
             case PlayerDirection.Right:
-                return (Vector2.right, new Vector3(0f, 0f, -90f));
+                return Vector2.right;
             case PlayerDirection.Left:
-                return (Vector2.left, new Vector3(0f, 0f, 90f));
+                return Vector2.left;
             default:
-                return (Vector2.up, new Vector3(0f, 0f, 0f));
+                return Vector2.up;
+        }
+    }
+
+    private Vector3 GetProjectileRotation(PlayerDirection playerDirection)
+    {
+        switch (playerDirection)
+        {
+            case PlayerDirection.Down:
+                return new Vector3(0f, 0f, -180f);
+            case PlayerDirection.Right:
+                return new Vector3(0f, 0f, -90f);
+            case PlayerDirection.Left:
+                return new Vector3(0f, 0f, 90f);
+            default:
+                return new Vector3(0f, 0f, 0f);
         }
     }
 
@@ -185,5 +202,7 @@ public class PlayerController : MonoBehaviour
             Destroy(heart);
         }
     }
+
+    public bool SetHasCoin(bool has) => hasCoin = has;
 }
 
