@@ -100,6 +100,9 @@ public class PlayerController : MonoBehaviour
     {
         currentState = PlayerStates.Attack;
         Debug.Log(lastMovement);
+        
+        rgbody2D.velocity = Vector2.zero;
+
         animator.SetBool("Attack", true);
         animator.SetFloat("Last Move Horizontal", lastMovement.x);
         animator.SetFloat("Last Move Vertical", lastMovement.y);

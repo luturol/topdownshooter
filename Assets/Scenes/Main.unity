@@ -264,6 +264,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a5ae652639250488634fc025ca5532, type: 3}
 --- !u!4 &23758474 stripped
@@ -397,6 +405,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6047437849635544989, guid: 65a5ae652639250488634fc025ca5532, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_LinearDrag
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -644,6 +660,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a5ae652639250488634fc025ca5532, type: 3}
 --- !u!4 &514249284 stripped
@@ -720,6 +744,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6047437849635544989, guid: 65a5ae652639250488634fc025ca5532, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_LinearDrag
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -846,7 +878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760777985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000035762787, y: -0.3400004, z: -10}
+  m_LocalPosition: {x: -0.00000023841858, y: -0.3400004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -955,6 +987,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6047437849635544989, guid: 65a5ae652639250488634fc025ca5532, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_LinearDrag
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -78569,6 +78609,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a5ae652639250488634fc025ca5532, type: 3}
 --- !u!4 &996501326 stripped
@@ -128421,7 +128469,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741772926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000035762787, y: -0.3400004, z: -10}
+  m_LocalPosition: {x: -0.00000023841858, y: -0.3400004, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1993833992}
@@ -129109,6 +129157,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65a5ae652639250488634fc025ca5532, type: 3}
 --- !u!4 &2108576025 stripped
@@ -129266,6 +129322,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1464192559226799305, guid: cc8c7f4078116de4c89559757e6b4511, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1464192559226799306, guid: cc8c7f4078116de4c89559757e6b4511, type: 3}
       propertyPath: m_Name
       value: Player
@@ -129474,6 +129534,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6047437849635544989, guid: 65a5ae652639250488634fc025ca5532, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6047437849635544990, guid: 65a5ae652639250488634fc025ca5532, type: 3}
+      propertyPath: m_LinearDrag
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
