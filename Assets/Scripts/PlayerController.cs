@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private Rigidbody2D rgbody2D;
     private Animator animator;
+    private FlashAnimation flashAnimation;
 
     private InputAction move;
     private InputAction attack;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
         rgbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        flashAnimation = GetComponent<FlashAnimation>();
 
         move = playerInput.actions["Move"];
         attack = playerInput.actions["Attack"];
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
         hitPoints = hearts.Count();
 
-        if(!hasCoin)
+        if (!hasCoin)
         {
             coinIcon.SetActive(false);
         }
@@ -60,12 +62,12 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(hasCoin)
+        if (hasCoin)
         {
             coinIcon.SetActive(true);
         }
 
-        if(hitPoints == 0)
+        if (hitPoints == 0)
         {
             GameController.Instance.AddDeath();
             GameController.Instance.SendToMenu();
@@ -100,7 +102,7 @@ public class PlayerController : MonoBehaviour
     {
         currentState = PlayerStates.Attack;
         Debug.Log(lastMovement);
-        
+
         rgbody2D.velocity = Vector2.zero;
 
         animator.SetBool("Attack", true);
@@ -123,7 +125,7 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = Vector2.zero;
 
         int x = Mathf.RoundToInt(lastMovement.x);
-        int y = Mathf.RoundToInt(lastMovement.y);        
+        int y = Mathf.RoundToInt(lastMovement.y);
 
         var playerDirection = GetPlayerDirection(x, y);
         direction = GetVector2Direction(playerDirection);
@@ -217,6 +219,7 @@ public class PlayerController : MonoBehaviour
 
         if (hearts.Count() > 0)
         {
+            flashAnimation.Flash();
             var heart = hearts.Last();
             hearts.Remove(heart);
             Destroy(heart);
