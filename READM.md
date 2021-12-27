@@ -21,6 +21,7 @@ Coletar a moeda que está em algum lugar do mapa e sair dele pela estrada que en
 - Animação de flash quando o player toma um dano
 - Corações que informam a vida do player no canto superior esquerdo
 - Ao coletar a moeda, irá aparecer um ícone da moeda no canto superior direito da tela
+- Ao morrer soma +1 no contador de mortes
 
 ### Inimigo:
 
@@ -38,3 +39,10 @@ Coletar a moeda que está em algum lugar do mapa e sair dele pela estrada que en
 - Possui uma animação que faz parecer um bouncing
 - Ao ser coletada, desaparece e mostra um ícone no canto superior direito
 - Só é permitido sair da tela se tiver coletado a moeda
+    - Ao sair do mapa com a moeda, soma +1 no contador de vitórias
+
+### Menu Inicial:
+
+- Mostra quantas vezes o jogador perdeu
+- Mostra quantas vezes o jogador venceu
+- Botão para iniciar o jogo
