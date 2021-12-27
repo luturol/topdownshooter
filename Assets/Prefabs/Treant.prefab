@@ -44,9 +44,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09543228}
+  m_Offset: {x: 0.26465607, y: -0.095431805}
   serializedVersion: 2
-  m_Radius: 2.472271
+  m_Radius: 4.1674986
 --- !u!1 &6047437849635544963
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 6047437849635544990}
   - component: {fileID: 6047437849635544961}
   - component: {fileID: 6047437849635544960}
+  - component: {fileID: 2081181606}
   m_Layer: 0
   m_Name: Treant
   m_TagString: Enemy
@@ -161,7 +162,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6047437849635544963}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -212,8 +213,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb61cad06c5cf8f4b919d5cab2bb3009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 7
   shouldRotate: 1
   direction: {x: 0, y: 0, z: 0}
   attackCouldown: 3
   hitPoints: 2
+--- !u!114 &2081181606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047437849635544963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91eea50f30ed704cbae2cdc68cd17d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 9f68cea1d0a02a548a5dde5b00e1dc56, type: 2}
+  duration: 0.2

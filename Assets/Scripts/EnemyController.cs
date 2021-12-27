@@ -21,6 +21,8 @@ public class EnemyController : MonoBehaviour
     private Transform target;
     private Animator animator;
     private Rigidbody2D rgbody2D;
+    private FlashAnimation flashAnimation;
+
     private Vector2 movement;
     private Vector2 lastMovement;
     private EnemyState currentState;
@@ -31,6 +33,8 @@ public class EnemyController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rgbody2D = GetComponent<Rigidbody2D>();
+        flashAnimation = GetComponent<FlashAnimation>();
+
         target = GameObject.FindWithTag("Player").transform;
         currentState = EnemyState.Idle;
     }
@@ -127,5 +131,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void LoseHitPoints() => hitPoints -= 1;
+    public void LoseHitPoints() 
+    {
+        hitPoints -= 1;
+        flashAnimation.Flash();
+    }
 }
